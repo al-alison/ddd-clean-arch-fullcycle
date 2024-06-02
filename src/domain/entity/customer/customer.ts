@@ -2,6 +2,10 @@
 //SEMPRE DEVE SE AUTOVALIDAR
 //DESCONFIE DE SETS 
 
+import EventDispatcher from "../../event/@shared/event-dispatcher";
+import EventDispatcherInterface from "../../event/@shared/event-dispatcher.interface";
+import CustomerAddressChangedEvent from "../../event/customer/customer-address-changed.event";
+import CustomerCreatedEvent from "../../event/customer/customer-created.event";
 import Address from "./address";
 
 //FOCADO EM NEGOCIO, NAO EM PERSISTENCIA. PARA PERSISTENCIA UTILIZAR OUTRO OBJETO/MODEL
@@ -18,9 +22,23 @@ export default class Customer{
         this.validate();
     }
 
+
+    
+    static create(id: string, name: string, eventDispatcher: EventDispatcherInterface) {
+        const customer = new Customer(id, name);
+        eventDispatcher.notify(new CustomerCreatedEvent({id, name}));    
+        return customer
+      }
+
     changeAddress(address: Address){
         this._address = address;
         this.validate();
+    }
+
+    changeAddressWithEvent(address: Address, eventDispatcher: EventDispatcherInterface){
+        this._address = address;
+        this.validate();
+        eventDispatcher.notify(new CustomerAddressChangedEvent({id: this.id, name: this.name, address: address}));    
     }
 
     validate(){

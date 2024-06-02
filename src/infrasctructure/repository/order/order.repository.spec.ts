@@ -112,7 +112,6 @@ describe("Order Repository Tests", () => {
         const orderItem3 = new OrderItem("i3", product3.name, product3.price, product3.id, 6);
         order.items.length = 0;
         order.items.push(orderItem3);
-        console.log(order);
         await orderRepository.update(order);
 
         const orderModel = await OrderModel.findOne({
