@@ -1,4 +1,4 @@
-import OrderModel from './order.model';
+import {OrderModel} from "../../../../../internal";
 import { BelongsTo, Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript'
 import ProductModel from '../../../../product/sequelize/model/product.model';
 
@@ -22,7 +22,7 @@ export default class OrderItemModel extends Model {
     @Column({ allowNull: false })
     declare orderId: string;
 
-    @BelongsTo(() => OrderModel)
+    @BelongsTo(() => OrderModel, {as: "owner", foreignKey: "orderId"})
     declare order: OrderModel;
 
     @Column({ allowNull: false })

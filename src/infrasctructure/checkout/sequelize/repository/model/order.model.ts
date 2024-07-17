@@ -1,4 +1,4 @@
-import OrderItemModel from './order-item.model';
+import {OrderItemModel} from "../../../../../internal";
 import { BelongsTo, Column, ForeignKey, HasMany, Model, PrimaryKey, Table } from 'sequelize-typescript'
 import CustomerModel from '../../../../customer/sequelize/model/customer.model';
 
@@ -21,6 +21,6 @@ export default class OrderModel extends Model {
     @Column({ allowNull: false })
     declare total: number;
 
-    @HasMany(() => OrderItemModel)
+    @HasMany(() => OrderItemModel, {foreignKey: "orderId", sourceKey: "id"})
     declare items: OrderItemModel[]
 }

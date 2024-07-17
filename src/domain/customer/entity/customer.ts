@@ -2,7 +2,7 @@
 //SEMPRE DEVE SE AUTOVALIDAR
 //DESCONFIE DE SETS 
 
-import EventDispatcherInterface from "../../@shared/event/event-dispatcher.interface";
+import EventDispatcherInterface from "../../../@shared/event/event-dispatcher.interface";
 import CustomerAddressChangedEvent from "../event/customer-address-changed.event";
 import CustomerCreatedEvent from "../event/customer-created.event";
 import Address from "../value_object/address";
