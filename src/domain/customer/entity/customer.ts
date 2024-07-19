@@ -2,26 +2,30 @@
 //SEMPRE DEVE SE AUTOVALIDAR
 //DESCONFIE DE SETS 
 
+import Entity from "../../@shared/entity/entity.abstract";
 import EventDispatcherInterface from "../../@shared/event/event-dispatcher.interface";
+import NotificationError from "../../@shared/notification/notification.error";
 import CustomerAddressChangedEvent from "../event/customer-address-changed.event";
 import CustomerCreatedEvent from "../event/customer-created.event";
 import Address from "../value_object/address";
 
 //FOCADO EM NEGOCIO, NAO EM PERSISTENCIA. PARA PERSISTENCIA UTILIZAR OUTRO OBJETO/MODEL
-export default class Customer{
-    private _id: string;
+export default class Customer extends Entity {
     private  _name: string;
     private _address!: Address;
     private _rewardPoints: number = 0;
     private _active: boolean = false;
 
     constructor(id: string, name: string){
+        super();
         this._id = id;
         this._name = name;
         this.validate();
+
+        if (this.notification.hasErrors()){
+            throw new NotificationError(this.notification.errors);
+        }
     }
-
-
     
     static create(id: string, name: string, eventDispatcher: EventDispatcherInterface) {
         const customer = new Customer(id, name);
@@ -41,11 +45,11 @@ export default class Customer{
     }
 
     validate(){
-        if (this._name.length === 0){
-            throw new Error("Name is required");
+        if (this.id.length === 0){
+            this.notification.addError({message: "Id is required", context: "customer"});
         }
-        if (this._id.length === 0){
-            throw new Error("Id is required");
+        if (this._name.length === 0){
+            this.notification.addError({message: "Name is required", context: "customer"});
         }
     }
 
@@ -65,9 +69,6 @@ export default class Customer{
         this.validate();
     }
 
-    get id(): string{
-        return this._id;
-    }
     get name(): string{
         return this._name;
     }
