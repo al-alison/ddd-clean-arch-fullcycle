@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import CreateProductUseCase from "./create.product.usecase";
-import ProductModel from "../../../infrasctructure/product/sequelize/model/product.model";
-import ProductRepository from "../../../infrasctructure/product/sequelize/repository/product.repository";
+import ProductModel from "../../../infrastructure/product/sequelize/model/product.model";
+import ProductRepository from "../../../infrastructure/product/sequelize/repository/product.repository";
 
 
 const input = {

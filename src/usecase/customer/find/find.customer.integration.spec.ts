@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import FindCustomerUseCase from "./find.customer.usecase";
-import CustomerModel from "../../../infrasctructure/customer/sequelize/model/customer.model";
-import CustomerRepository from "../../../infrasctructure/customer/sequelize/repository/customer.repository";
+import CustomerModel from "../../../infrastructure/customer/sequelize/model/customer.model";
+import CustomerRepository from "../../../infrastructure/customer/sequelize/repository/customer.repository";
 import Customer from "../../../domain/customer/entity/customer";
 import Address from "../../../domain/customer/value_object/address";
 

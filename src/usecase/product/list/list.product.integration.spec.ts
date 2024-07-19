@@ -2,8 +2,8 @@ import { Sequelize } from "sequelize-typescript";
 import ListProductUseCase from "./list.product.usecase";
 import ProductFactory from "../../../domain/product/factory/product.factory";
 import Product from "../../../domain/product/entity/product";
-import ProductModel from "../../../infrasctructure/product/sequelize/model/product.model";
-import ProductRepository from "../../../infrasctructure/product/sequelize/repository/product.repository";
+import ProductModel from "../../../infrastructure/product/sequelize/model/product.model";
+import ProductRepository from "../../../infrastructure/product/sequelize/repository/product.repository";
 
 const product1 = ProductFactory.create("a", "Product 1", 100) as Product;
 const product2 = ProductFactory.create("b", "Product 2", 200) as Product;

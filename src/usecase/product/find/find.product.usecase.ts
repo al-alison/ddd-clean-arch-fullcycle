@@ -1,4 +1,4 @@
-import ProductRepository from "../../../infrasctructure/product/sequelize/repository/product.repository";
+import ProductRepository from "../../../infrastructure/product/sequelize/repository/product.repository";
 import { InputFindProductDto, OutputFindProductDto } from "./find.product.dto";
 
 export default class FindProductUseCase{
